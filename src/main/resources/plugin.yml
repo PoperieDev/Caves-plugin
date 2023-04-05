@@ -1,0 +1,11 @@
+name: Caves
+version: '${project.version}'
+main: com.poperie.caves.Caves
+authors: [Poperie#0140]
+description: Caves plugin for the caves server.
+
+commands:
+    cavesdata:
+        usage: /cavesdata
+        description: Caves plugin for the caves server.
+        aliases: [cave, caveplugin, cavesplugin]

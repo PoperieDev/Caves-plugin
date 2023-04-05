@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="caves:jar">
+    <output-path>$USER_HOME$/SERVER/1.8.8 Caves/plugins</output-path>
+    <root id="archive" name="caves.jar">
+      <element id="module-output" name="caves" />
+    </root>
+  </artifact>
+</component>

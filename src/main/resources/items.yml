@@ -1,0 +1,24 @@
+items:
+  cobblestone:
+    name: '&7Cobblestone'
+    lore:
+      - '&7A block of cobblestone.'
+    material: COBBLESTONE
+    shiny: false
+    worth: 1
+
+  stone:
+    name: '&7Stone'
+    lore:
+      - '&7A block of stone.'
+    material: STONE
+    shiny: false
+    worth: 2
+
+  coal:
+    name: '&7Coal'
+    lore:
+      - '&7A piece of coal.'
+    material: COAL
+    shiny: false
+    worth: 5
