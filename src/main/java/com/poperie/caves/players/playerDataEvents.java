@@ -6,11 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class playerDataEvents implements Listener {
     // Implement the onJoin event
@@ -28,7 +26,7 @@ public class playerDataEvents implements Listener {
 
             // Backpack
             if (cfg.getList("backpack.items") != null) {
-                memory.setBackPack(cfg.getList("backpack.items").toArray(new ItemStack[0]));
+                memory.setBackPack(cfg.getList("backpack.items").toArray(new String[0]));
             } else {
                 memory.setBackPack(null);
             }

@@ -1,8 +1,10 @@
 package com.poperie.caves;
 
+import com.poperie.caves.items.loadItems;
+import com.poperie.caves.players.backpack.inventoryClickEvent;
+import com.poperie.caves.players.backpack.viewBackPackCommand;
+import com.poperie.caves.players.dataCommand;
 import com.poperie.caves.players.playerDataEvents;
-import com.poperie.caves.players.playerUtility;
-import com.poperie.caves.players.setDataCommand;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,6 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Objects;
 
 import static com.poperie.caves.scoreboard.createScoreboard;
@@ -28,11 +31,22 @@ public final class Caves extends JavaPlugin implements Listener {
         }
 
         // Register the commands
-        Objects.requireNonNull(getCommand("cavesdata")).setExecutor(new setDataCommand());
+        Objects.requireNonNull(getCommand("cavesdata")).setExecutor(new dataCommand());
+        Objects.requireNonNull(getCommand("backpack")).setExecutor(new viewBackPackCommand());
 
         // Register the event listener
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new playerDataEvents(), this);
+        getServer().getPluginManager().registerEvents(new inventoryClickEvent(), this);
+
+        // Load items from items.yml file
+        File configFile = new File(getDataFolder().getAbsolutePath() + "/items.yml");
+        if (!configFile.exists()) {
+            this.saveResource("items.yml", true);
+        }
+
+        // Load items from items.yml file
+        loadItems.loadAllItems();
 
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {

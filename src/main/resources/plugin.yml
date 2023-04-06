@@ -9,3 +9,7 @@ commands:
         usage: /cavesdata
         description: Caves plugin for the caves server.
         aliases: [cave, caveplugin, cavesplugin]
+    backpack:
+        usage: /backpack
+        description: Opens your backpack.
+        aliases: [bp, backpacks, ryksæk]

@@ -1,12 +1,15 @@
 package com.poperie.caves.players;
 
+import com.poperie.caves.items.itemMemory;
+import com.poperie.caves.items.itemUtility;
 import com.poperie.caves.scoreboard;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class setDataCommand implements CommandExecutor {
+
+public class dataCommand implements CommandExecutor {
 
     // Command for adding xp to a player
     @Override
@@ -16,7 +19,7 @@ public class setDataCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        playerMemory memory = playerUtility.getPlayerMemory(player);
+        playerMemory playerMemory = playerUtility.getPlayerMemory(player);
 
         // Check if there are no arguments
         if (args.length == 0) {
@@ -27,7 +30,7 @@ public class setDataCommand implements CommandExecutor {
         }
 
         if (args[0].equals("xp")) {
-            memory.setXp(Double.parseDouble(args[1]));
+            playerMemory.setXp(Double.parseDouble(args[1]));
             player.sendMessage("§aYour new xp is now: " + args[1]);
             scoreboard.createScoreboard(player);
             return true;
@@ -35,7 +38,7 @@ public class setDataCommand implements CommandExecutor {
 
         // Adding to backpack
         if (args[0].equals("backpacksize")) {
-            memory.setBackPackSize(Integer.parseInt(args[1]));
+            playerMemory.setBackPackSize(Integer.parseInt(args[1]));
             player.sendMessage("§aYour new backpack size is now: " + args[1]);
             scoreboard.createScoreboard(player);
             return true;
@@ -43,7 +46,7 @@ public class setDataCommand implements CommandExecutor {
 
         // Add item to backpack
         if (args[0].equals("additemtobackpack")) {
-            memory.addItemToBackpack(player.getInventory().getItemInHand());
+            playerMemory.addItemToBackpack(args[1]);
             player.sendMessage("§aAdded item to backpack");
             scoreboard.createScoreboard(player);
             return true;
@@ -51,9 +54,27 @@ public class setDataCommand implements CommandExecutor {
 
         // Clear backpack
         if (args[0].equals("clearbackpack")) {
-            memory.clearBackPack();
+            playerMemory.clearBackPack();
             player.sendMessage("§aCleared backpack");
             scoreboard.createScoreboard(player);
+            return true;
+        }
+
+        // Get item data
+        if (args[0].equals("getitemdata")) {
+            itemMemory memory = itemUtility.getItemMemory(args[1]);
+            player.sendMessage("§fName: §b" + memory.getName());
+            player.sendMessage("§fMaterial: §b" + memory.getMaterial());
+            player.sendMessage("§fShiny: §b" + memory.getShiny());
+            player.sendMessage("§fWorth: §b" + memory.getWorth());
+
+            return true;
+        }
+
+        // Give item
+        if (args[0].equals("giveitem")) {
+            itemMemory memory = itemUtility.getItemMemory(args[1]);
+            player.getInventory().addItem(memory.getItem());
             return true;
         }
 

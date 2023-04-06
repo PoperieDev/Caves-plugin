@@ -1,20 +1,18 @@
 package com.poperie.caves.players;
 
-import org.bukkit.inventory.ItemStack;
-
 public class playerMemory {
     private int backPackSize;
     private double xp;
-    private ItemStack[] backPack;
+    private String[] backPack;
 
     // Backpack
-    public void setBackPack(ItemStack[] backPack) {
+    public void setBackPack(String[] backPack) {
         this.backPack = backPack;
     }
-    public ItemStack[] getBackPack() {
+    public String[] getBackPack() {
         return backPack;
     }
-    public ItemStack getBackPackItem(int slot) {
+    public String getBackPackItem(int slot) {
         return backPack[slot];
     }
     public void clearBackPack() {
@@ -28,19 +26,19 @@ public class playerMemory {
         return backPack.length;
     }
 
-    public void addItemToBackpack(ItemStack item) {
+    public void addItemToBackpack(String item) {
 
         if (backPackSize <= getBackPackItemsCount()) {
             return;
         }
 
         if (backPack == null) {
-            backPack = new ItemStack[1];
+            backPack = new String[1];
             backPack[0] = item;
             return;
         }
 
-        ItemStack[] newBackPack = new ItemStack[backPack.length + 1];
+        String[] newBackPack = new String[backPack.length + 1];
         for (int i = 0; i < backPack.length; i++) {
             newBackPack[i] = backPack[i];
         }
