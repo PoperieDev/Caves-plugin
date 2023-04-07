@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class playerDataEvents implements Listener {
     // Implement the onJoin event
@@ -25,6 +26,20 @@ public class playerDataEvents implements Listener {
             memory.setXp(cfg.getInt("stats.xp"));
 
             // Backpack
+            memory.setBackPackSlotSize(cfg.getInt("stats.slotSize"));
+
+            if (cfg.getIntegerList("backpack.itemAmounts") != null) {
+                List<Integer> itemAmounts = cfg.getIntegerList("backpack.itemAmounts");
+                // Loop through the list and add the values to the array
+                int[] itemAmountsArray = new int[itemAmounts.size()];
+                for (int i = 0; i < itemAmounts.size(); i++) {
+                    itemAmountsArray[i] = itemAmounts.get(i);
+                }
+                memory.setBackPackItemAmounts(itemAmountsArray);
+            } else {
+                memory.setBackPackItemAmounts(null);
+            }
+
             if (cfg.getList("backpack.items") != null) {
                 memory.setBackPack(cfg.getList("backpack.items").toArray(new String[0]));
             } else {
@@ -35,6 +50,8 @@ public class playerDataEvents implements Listener {
             // Defaults
             memory.setBackPackSize(5);
             memory.setXp(0);
+            memory.setBackPackSlotSize(10);
+            memory.setBackPack(null);
         }
         playerUtility.setPlayerMemory(event.getPlayer(), memory);
     }
@@ -49,7 +66,9 @@ public class playerDataEvents implements Listener {
         // Saved data
         cfg.set("stats.backpackSize", memory.getBackPackSize());
         cfg.set("stats.xp", memory.getXp());
+        cfg.set("stats.slotSize", memory.getBackPackSlotSize());
         cfg.set("backpack.items", memory.getBackPack());
+        cfg.set("backpack.itemAmounts", memory.getBackPackItemAmounts());
 
         try {
             cfg.save(f);

@@ -74,7 +74,7 @@ public class dataCommand implements CommandExecutor {
         // Give item
         if (args[0].equals("giveitem")) {
             itemMemory memory = itemUtility.getItemMemory(args[1]);
-            player.getInventory().addItem(memory.getItem());
+            player.getInventory().addItem(memory.getItem(1));
             return true;
         }
 

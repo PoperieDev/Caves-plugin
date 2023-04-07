@@ -45,13 +45,12 @@ public class itemMemory {
         return worth;
     }
 
-    public ItemStack getItem () {
-        ItemStack item = new ItemStack(material);
+    public ItemStack getItem (int amount) {
+        ItemStack item = new ItemStack(material, amount);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
 
         List<String> loreList = new ArrayList<>();
-        loreList.add(" ");
         loreList.add("§fVærdi: §b" + getEconomy().format(worth));
         meta.setLore(loreList);
 

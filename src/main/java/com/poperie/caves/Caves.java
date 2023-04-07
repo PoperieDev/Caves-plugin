@@ -1,7 +1,9 @@
 package com.poperie.caves;
 
 import com.poperie.caves.items.loadItems;
-import com.poperie.caves.players.backpack.inventoryClickEvent;
+import com.poperie.caves.npcs.sell.sellNpcEvents;
+import com.poperie.caves.npcs.sell.sellNpcGui;
+import com.poperie.caves.players.backpack.backPackEvents;
 import com.poperie.caves.players.backpack.viewBackPackCommand;
 import com.poperie.caves.players.dataCommand;
 import com.poperie.caves.players.playerDataEvents;
@@ -37,7 +39,9 @@ public final class Caves extends JavaPlugin implements Listener {
         // Register the event listener
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new playerDataEvents(), this);
-        getServer().getPluginManager().registerEvents(new inventoryClickEvent(), this);
+        getServer().getPluginManager().registerEvents(new backPackEvents(), this);
+        getServer().getPluginManager().registerEvents(new sellNpcGui(), this);
+        getServer().getPluginManager().registerEvents(new sellNpcEvents(), this);
 
         // Load items from items.yml file
         File configFile = new File(getDataFolder().getAbsolutePath() + "/items.yml");
