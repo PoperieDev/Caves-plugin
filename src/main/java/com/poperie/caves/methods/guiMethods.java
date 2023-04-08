@@ -1,6 +1,5 @@
 package com.poperie.caves.methods;
 
-import com.poperie.caves.players.playerMemory;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -8,8 +7,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.poperie.caves.Caves.getEconomy;
 
 public class guiMethods {
 
@@ -41,8 +38,7 @@ public class guiMethods {
         fillBottomRow(inventory, item);
     }
 
-    // TODO: Remove the playerMemory parameter
-    public static ItemStack getButton(String buttonName, playerMemory playerMemory) {
+    public static ItemStack getButton(String buttonName) {
 
         switch (buttonName) {
             case "reload": {
@@ -54,22 +50,6 @@ public class guiMethods {
                 List<String> lore = new ArrayList<>();
                 lore.add("§7Genindlæs menu");
                 lore.add("§bKlik for at genindlæse menuen");
-                meta.setLore(lore);
-
-                item.setItemMeta(meta);
-                return item;
-
-            }
-            case "sellAll": {
-
-                ItemStack item = new ItemStack(Material.EMERALD_BLOCK);
-                ItemMeta meta = item.getItemMeta();
-                meta.setDisplayName("§b§lSælg alt");
-
-                // Lore
-                List<String> lore = new ArrayList<>();
-                lore.add("§fSælg alt for: §b" + getEconomy().format(playerMemory.getBackPackWorth()));
-                lore.add("§bKlik for at sælge alt");
                 meta.setLore(lore);
 
                 item.setItemMeta(meta);

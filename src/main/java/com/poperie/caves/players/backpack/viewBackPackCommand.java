@@ -33,7 +33,7 @@ public class viewBackPackCommand implements CommandExecutor {
 
         // Create a new inventory with 6 rows
         Inventory inventory = player.getServer().createInventory(player, 6 * 9, "§b§lRygsæk");
-        guiMethods.fillBottomRow(inventory, new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 7));
+        guiMethods.fillBottomRow(inventory, new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3));
 
         // Fill the backpack with items
         for (int i = 0; i < playerMemory.getBackPackItemsCount(); i++) {
@@ -83,7 +83,7 @@ public class viewBackPackCommand implements CommandExecutor {
         }
 
         // Buttons
-        inventory.setItem(6*9-4, guiMethods.getButton("reload", getPlayerMemory(player)));
+        inventory.setItem(6*9-4, guiMethods.getButton("reload"));
 
         ItemStack item = new ItemStack(Material.SIGN);
         ItemMeta meta = item.getItemMeta();

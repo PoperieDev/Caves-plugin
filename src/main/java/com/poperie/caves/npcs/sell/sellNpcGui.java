@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import static com.poperie.caves.Caves.getEconomy;
+import static com.poperie.caves.methods.itemstacks.createItemStack;
 import static com.poperie.caves.players.playerUtility.getPlayerMemory;
 
 public class sellNpcGui implements Listener {
@@ -30,10 +32,17 @@ public class sellNpcGui implements Listener {
 
         Inventory inventory = player.getServer().createInventory(player, 5*9, "§b§lSælg");
 
-        guiMethods.fillTopAndBottom(inventory, new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 7));
-        inventory.setItem(20, guiMethods.getButton("sellAll", getPlayerMemory(player)));
-        inventory.setItem(22, guiMethods.getButton("sellAllOfType", getPlayerMemory(player)));
-        inventory.setItem(24, guiMethods.getButton("sellItem", getPlayerMemory(player)));
+        guiMethods.fillTopAndBottom(inventory, new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3));
+
+        // Sell all items button
+
+        ItemStack item = createItemStack(Material.EMERALD_BLOCK, 1, "&b&lSælg alt", "&fVærdi af din ryksæk: &b" + getEconomy().format(getPlayerMemory(player).getBackPackWorth()) + "%nl%&bKlik for at sælge alt", 1);
+
+        inventory.setItem(20, item);
+        // TODO Implement sellAllOfType button
+        inventory.setItem(22, guiMethods.getButton("sellAllOfType"));
+
+        inventory.setItem(24, guiMethods.getButton("sellItem"));
 
         player.openInventory(inventory);
     }

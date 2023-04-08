@@ -13,6 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
 import static com.poperie.caves.Caves.getEconomy;
+import static com.poperie.caves.npcs.sell.sellNpcBackpackGui.openSellNpcBackpackGui;
 import static com.poperie.caves.players.playerUtility.getPlayerMemory;
 import static com.poperie.caves.scoreboard.createScoreboard;
 
@@ -29,6 +30,17 @@ public class sellNpcEvents implements Listener {
         double worth = playerMemory.getBackPackWorth();
 
         Inventory inventory = event.getInventory();
+
+        if (event.getSlot() == 24) {
+            if (worth == 0) {
+                player.playSound(player.getLocation(), "minecraft:note.bass", 1, 1);
+                player.sendMessage("§cDu har ingen ting i din rygsæk!");
+                return;
+            }
+            openSellNpcBackpackGui(player);
+            return;
+        }
+
         if (event.getSlot() == 20) {
             if (worth == 0) {
                 player.playSound(player.getLocation(), "minecraft:note.bass", 1, 1);
@@ -36,7 +48,7 @@ public class sellNpcEvents implements Listener {
                 return;
             }
             if (inventory.getItem(event.getSlot()).getType() == Material.EMERALD_BLOCK) {
-                inventory.setItem(event.getSlot(), guiMethods.getButton("sellAllConfirm", getPlayerMemory(player)));
+                inventory.setItem(event.getSlot(), guiMethods.getButton("sellAllConfirm"));
             } else {
                 Plugin plugin = Caves.getPlugin(Caves.class);
 

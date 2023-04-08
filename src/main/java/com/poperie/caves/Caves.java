@@ -58,6 +58,10 @@ public final class Caves extends JavaPlugin implements Listener {
             }
         }
 
+        // Enable tasks
+        repeatingTasks.startSavingPlayerData(this);
+        repeatingTasks.startBroadcasts(this);
+
         // Log startup message to console
         getLogger().info("Caves has been enabled!");
     }

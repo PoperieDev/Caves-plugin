@@ -8,8 +8,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
+
+import static com.poperie.caves.players.playerUtility.savePlayerData;
 
 public class playerDataEvents implements Listener {
     // Implement the onJoin event
@@ -59,23 +60,6 @@ public class playerDataEvents implements Listener {
 
     @EventHandler
     private void onQuit(PlayerQuitEvent event) {
-        playerMemory memory = playerUtility.getPlayerMemory(event.getPlayer());
-        File f = new File(playerUtility.getFolderPath(event.getPlayer()) + "/data.yml");
-        FileConfiguration cfg = YamlConfiguration.loadConfiguration(f);
-
-        // Saved data
-        cfg.set("stats.backpackSize", memory.getBackPackSize());
-        cfg.set("stats.xp", memory.getXp());
-        cfg.set("stats.slotSize", memory.getBackPackSlotSize());
-        cfg.set("backpack.items", memory.getBackPack());
-        cfg.set("backpack.itemAmounts", memory.getBackPackItemAmounts());
-
-        try {
-            cfg.save(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        playerUtility.setPlayerMemory(event.getPlayer(), null);
+        savePlayerData(event.getPlayer(), true);
     }
 }
