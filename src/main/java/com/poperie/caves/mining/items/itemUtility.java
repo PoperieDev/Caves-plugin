@@ -1,4 +1,4 @@
-package com.poperie.caves.items;
+package com.poperie.caves.mining.items;
 
 import java.io.File;
 import java.util.HashMap;

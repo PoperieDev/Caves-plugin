@@ -1,10 +1,11 @@
 package com.poperie.caves;
 
-import com.poperie.caves.items.loadItems;
+import com.poperie.caves.admin.blocksCommand;
+import com.poperie.caves.mining.items.loadItems;
 import com.poperie.caves.npcs.sell.sellNpcEvents;
 import com.poperie.caves.npcs.sell.sellNpcGui;
 import com.poperie.caves.players.backpack.backPackEvents;
-import com.poperie.caves.players.backpack.viewBackPackCommand;
+import com.poperie.caves.admin.viewBackPackCommand;
 import com.poperie.caves.players.dataCommand;
 import com.poperie.caves.players.playerDataEvents;
 import net.milkbowl.vault.economy.Economy;
@@ -34,6 +35,7 @@ public final class Caves extends JavaPlugin implements Listener {
 
         // Register the commands
         Objects.requireNonNull(getCommand("cavesdata")).setExecutor(new dataCommand());
+        Objects.requireNonNull(getCommand("caveblocks")).setExecutor(new blocksCommand());
         Objects.requireNonNull(getCommand("backpack")).setExecutor(new viewBackPackCommand());
 
         // Register the event listener

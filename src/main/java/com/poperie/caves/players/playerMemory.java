@@ -1,13 +1,12 @@
 package com.poperie.caves.players;
 
-import static com.poperie.caves.items.itemUtility.getItemMemory;
+import static com.poperie.caves.mining.items.itemUtility.getItemMemory;
 
 public class playerMemory {
     private int backPackSize;
     private double xp;
     private String[] backPack;
 
-    // TODO: Add a method to remove an item from the backpack
     private int backPackSlotSize;
     private int[] backPackItemAmounts;
 
@@ -47,6 +46,22 @@ public class playerMemory {
             return 0;
         }
         return backPack.length;
+    }
+
+    public void removeSlotFromBackPack(int slot) {
+        String[] newBackPack = new String[backPack.length-1];
+        int[] newBackPackItemAmounts = new int[backPackItemAmounts.length-1];
+
+        // Copy old backpack to new backpack
+        System.arraycopy(backPack, 0, newBackPack, 0, slot);
+        System.arraycopy(backPack, slot+1, newBackPack, slot, backPack.length-slot-1);
+
+        // Copy old backpack item amounts to new backpack item amounts
+        System.arraycopy(backPackItemAmounts, 0, newBackPackItemAmounts, 0, slot);
+        System.arraycopy(backPackItemAmounts, slot+1, newBackPackItemAmounts, slot, backPackItemAmounts.length-slot-1);
+
+        backPack = newBackPack;
+        backPackItemAmounts = newBackPackItemAmounts;
     }
 
     public void addItemToBackpack(String item) {

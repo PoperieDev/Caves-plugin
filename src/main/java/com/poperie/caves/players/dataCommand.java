@@ -1,12 +1,17 @@
 package com.poperie.caves.players;
 
-import com.poperie.caves.items.itemMemory;
-import com.poperie.caves.items.itemUtility;
+import com.poperie.caves.mining.items.itemMemory;
+import com.poperie.caves.mining.items.itemUtility;
 import com.poperie.caves.scoreboard;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.HashMap;
+import java.util.List;
+
+import static com.poperie.caves.mining.items.itemGroups.getGroups;
 
 
 public class dataCommand implements CommandExecutor {
@@ -25,7 +30,16 @@ public class dataCommand implements CommandExecutor {
         if (args.length == 0) {
             player.sendMessage("§cPlease specify a value to change");
             // List all the values that can be changed
-            player.sendMessage("§fValues: xp, backpacksize, additemtobackpack and clearbackpack");
+            player.sendMessage("§fValues: xp, backpacksize, additemtobackpack, getitemdata, clearbackpack, viewgroups");
+            return true;
+        }
+
+        if (args[0].equals("viewgroups")) {
+            HashMap<String, List<String>> groups = getGroups();
+            for (String group : groups.keySet()) {
+                player.sendMessage("§fGroup: " + group);
+                player.sendMessage("§fItems: " + groups.get(group));
+            }
             return true;
         }
 

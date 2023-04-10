@@ -1,4 +1,4 @@
-package com.poperie.caves.items;
+package com.poperie.caves.mining.items;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,6 +16,7 @@ public class itemMemory {
 
     String name;
     Material material;
+    Material block;
     boolean shiny;
     int worth;
 
@@ -35,6 +36,9 @@ public class itemMemory {
     public void setShiny(boolean shiny) {
         this.shiny = shiny;
     }
+    public void setBlock(String block) {
+        this.block = Material.valueOf(block);
+    }
     public boolean getShiny() {
         return shiny;
     }
@@ -43,6 +47,9 @@ public class itemMemory {
     }
     public int getWorth() {
         return worth;
+    }
+    public Material getBlock() {
+        return block;
     }
 
     public ItemStack getItem (int amount) {

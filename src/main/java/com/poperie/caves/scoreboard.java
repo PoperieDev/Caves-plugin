@@ -22,7 +22,7 @@ public class scoreboard {
     public static void createScoreboard(Player player) {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         Scoreboard board = manager.getNewScoreboard();
-        Objective objective = board.registerNewObjective(ChatColor.translateAlternateColorCodes('&', "&b&lCaves"), "");
+        Objective objective = board.registerNewObjective(ChatColor.translateAlternateColorCodes('&', "&b&lCAVES"), "");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         score = 15;

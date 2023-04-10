@@ -1,6 +1,6 @@
 package com.poperie.caves.npcs.sell;
 
-import com.poperie.caves.items.itemMemory;
+import com.poperie.caves.mining.items.itemMemory;
 import com.poperie.caves.methods.guiMethods;
 import com.poperie.caves.players.playerMemory;
 import org.bukkit.Material;
@@ -13,12 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.poperie.caves.Caves.getEconomy;
-import static com.poperie.caves.items.itemUtility.getItemMemory;
+import static com.poperie.caves.mining.items.itemUtility.getItemMemory;
 import static com.poperie.caves.players.playerUtility.getPlayerMemory;
 
 public class sellNpcBackpackGui {
-
-    // TODO: Finish this method (Add click listener and add code to sell items)
 
     public static void openSellNpcBackpackGui(Player player) {
         playerMemory playerMemory = getPlayerMemory(player);

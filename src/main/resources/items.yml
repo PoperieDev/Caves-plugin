@@ -2,17 +2,35 @@ items:
   cobblestone:
     name: '&7Cobblestone'
     material: COBBLESTONE
+    block: COBBLESTONE
     shiny: false
     worth: 1
 
   stone:
     name: '&7Stone'
     material: STONE
+    block: STONE
     shiny: false
     worth: 2
 
   coal:
     name: '&7Coal'
     material: COAL
+    block: COAL_ORE
     shiny: false
     worth: 5
+
+  iron:
+    name: '&7Iron'
+    material: IRON_INGOT
+    block: IRON_ORE
+    shiny: false
+    worth: 10
+
+groups:
+  stone:
+    items:
+      - cobblestone
+      - stone
+      - coal
+      - iron

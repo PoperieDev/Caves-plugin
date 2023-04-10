@@ -1,23 +1,49 @@
 package com.poperie.caves.npcs.sell;
 
 import com.poperie.caves.Caves;
+import com.poperie.caves.mining.items.itemMemory;
 import com.poperie.caves.methods.guiMethods;
 import com.poperie.caves.players.playerMemory;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
 import static com.poperie.caves.Caves.getEconomy;
+import static com.poperie.caves.mining.items.itemUtility.getItemMemory;
 import static com.poperie.caves.npcs.sell.sellNpcBackpackGui.openSellNpcBackpackGui;
 import static com.poperie.caves.players.playerUtility.getPlayerMemory;
 import static com.poperie.caves.scoreboard.createScoreboard;
 
 public class sellNpcEvents implements Listener {
+
+    @EventHandler
+    public void onSellBackPackGuiClick(InventoryClickEvent event) {
+        if (!(event.getInventory().getName().equals("§b§lSælg fra rygsæk"))) {
+            return;
+        }
+        event.setCancelled(true);
+        Player player = (Player) event.getWhoClicked();
+        playerMemory playerMemory = getPlayerMemory(player);
+
+        if (event.getSlot() < playerMemory.getBackPackItemsCount()) {
+            Economy economy = getEconomy();
+            itemMemory itemMemory = getItemMemory(playerMemory.getBackPackItem(event.getSlot()));
+            int worth = itemMemory.getWorth() * playerMemory.getBackPackItemAmount(event.getSlot());
+            player.playSound(player.getLocation(), "minecraft:random.orb", 1, 1);
+            player.sendMessage("§fDu solgte §b" + playerMemory.getBackPackItemAmount(event.getSlot()) + "§f " + ChatColor.translateAlternateColorCodes('&', itemMemory.getName()) + "§f for §b" + economy.format(worth) + "§f!");
+            playerMemory.removeSlotFromBackPack(event.getSlot());
+            economy.depositPlayer(player, worth);
+            createScoreboard(player);
+            openSellNpcBackpackGui(player);
+        }
+    }
 
     @EventHandler
     public void onSellGuiClick(org.bukkit.event.inventory.InventoryClickEvent event) {

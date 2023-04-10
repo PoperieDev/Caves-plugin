@@ -13,3 +13,5 @@ commands:
         usage: /backpack
         description: Opens your backpack.
         aliases: [bp, backpacks, ryksæk]
+    caveblocks:
+        usage: /caveblocks

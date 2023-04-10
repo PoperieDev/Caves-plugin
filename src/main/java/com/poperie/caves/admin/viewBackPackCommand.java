@@ -1,7 +1,7 @@
-package com.poperie.caves.players.backpack;
+package com.poperie.caves.admin;
 
-import com.poperie.caves.items.itemMemory;
-import com.poperie.caves.items.itemUtility;
+import com.poperie.caves.mining.items.itemMemory;
+import com.poperie.caves.mining.items.itemUtility;
 import com.poperie.caves.methods.guiMethods;
 import com.poperie.caves.players.playerMemory;
 import org.bukkit.Material;
@@ -22,7 +22,6 @@ import static com.poperie.caves.players.playerUtility.getPlayerMemory;
 public class viewBackPackCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // TODO: Add more buttons to the backpack inventory (Stats: Stack size, full backpack worth, etc.)
 
         if (!(sender instanceof Player)) {
             return false;
@@ -30,6 +29,10 @@ public class viewBackPackCommand implements CommandExecutor {
 
         Player player = (Player) sender;
         playerMemory playerMemory = getPlayerMemory(player);
+
+        if (!(player.hasPermission("caves.admin"))) {
+            return true;
+        }
 
         // Create a new inventory with 6 rows
         Inventory inventory = player.getServer().createInventory(player, 6 * 9, "§b§lRygsæk");
