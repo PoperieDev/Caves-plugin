@@ -10,8 +10,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.io.File;
 import java.util.List;
 
-import static com.poperie.caves.players.playerUtility.savePlayerData;
-
 public class playerDataEvents implements Listener {
     // Implement the onJoin event
     @EventHandler
@@ -60,6 +58,6 @@ public class playerDataEvents implements Listener {
 
     @EventHandler
     private void onQuit(PlayerQuitEvent event) {
-        savePlayerData(event.getPlayer(), true);
+        playerData.savePlayerData(event.getPlayer(), true);
     }
 }

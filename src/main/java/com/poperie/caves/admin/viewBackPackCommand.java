@@ -1,8 +1,8 @@
 package com.poperie.caves.admin;
 
+import com.poperie.caves.methods.guiMethods;
 import com.poperie.caves.mining.items.itemMemory;
 import com.poperie.caves.mining.items.itemUtility;
-import com.poperie.caves.methods.guiMethods;
 import com.poperie.caves.players.playerMemory;
 import org.bukkit.Material;
 import org.bukkit.command.Command;

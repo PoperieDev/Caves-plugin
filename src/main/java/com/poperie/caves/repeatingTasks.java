@@ -1,5 +1,6 @@
 package com.poperie.caves;
 
+import com.poperie.caves.players.playerData;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -9,7 +10,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import static com.poperie.caves.methods.broadcast.broadcastMessage;
-import static com.poperie.caves.players.playerUtility.savePlayerData;
 import static org.bukkit.Bukkit.getServer;
 
 public class repeatingTasks {
@@ -20,7 +20,7 @@ public class repeatingTasks {
         scheduler.scheduleSyncRepeatingTask(plugin, () -> {
 
             for (Player player : Bukkit.getOnlinePlayers()) {
-                savePlayerData(player, false);
+                playerData.savePlayerData(player, false);
             }
             Bukkit.broadcastMessage("§7Alt spillerdata er blevet gemt!");
 

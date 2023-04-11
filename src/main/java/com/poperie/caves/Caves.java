@@ -1,11 +1,11 @@
 package com.poperie.caves;
 
+import com.poperie.caves.admin.blocksAdminEvents;
 import com.poperie.caves.admin.blocksCommand;
-import com.poperie.caves.mining.items.loadItems;
+import com.poperie.caves.admin.viewBackPackCommand;
 import com.poperie.caves.npcs.sell.sellNpcEvents;
 import com.poperie.caves.npcs.sell.sellNpcGui;
 import com.poperie.caves.players.backpack.backPackEvents;
-import com.poperie.caves.admin.viewBackPackCommand;
 import com.poperie.caves.players.dataCommand;
 import com.poperie.caves.players.playerDataEvents;
 import net.milkbowl.vault.economy.Economy;
@@ -20,6 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.util.Objects;
 
+import static com.poperie.caves.mining.blocks.blockLoader.loadBlocks;
 import static com.poperie.caves.scoreboard.createScoreboard;
 
 public final class Caves extends JavaPlugin implements Listener {
@@ -44,6 +45,7 @@ public final class Caves extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new backPackEvents(), this);
         getServer().getPluginManager().registerEvents(new sellNpcGui(), this);
         getServer().getPluginManager().registerEvents(new sellNpcEvents(), this);
+        getServer().getPluginManager().registerEvents(new blocksAdminEvents(), this);
 
         // Load items from items.yml file
         File configFile = new File(getDataFolder().getAbsolutePath() + "/items.yml");
@@ -51,8 +53,9 @@ public final class Caves extends JavaPlugin implements Listener {
             this.saveResource("items.yml", true);
         }
 
-        // Load items from items.yml file
-        loadItems.loadAllItems();
+        // Load server data
+        serverData.loadServerData();
+        loadBlocks();
 
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -71,6 +74,8 @@ public final class Caves extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        getLogger().info("Caves has been disabled!");
+        serverData.saveServerData();
     }
 
     @EventHandler

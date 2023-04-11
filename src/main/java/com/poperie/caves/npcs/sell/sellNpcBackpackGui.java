@@ -1,7 +1,7 @@
 package com.poperie.caves.npcs.sell;
 
-import com.poperie.caves.mining.items.itemMemory;
 import com.poperie.caves.methods.guiMethods;
+import com.poperie.caves.mining.items.itemMemory;
 import com.poperie.caves.players.playerMemory;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
