@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import static com.poperie.caves.methods.broadcast.broadcastMessage;
+import static com.poperie.caves.methods.message.broadcastMessage;
 import static org.bukkit.Bukkit.getServer;
 
 public class repeatingTasks {
@@ -40,7 +40,6 @@ public class repeatingTasks {
             // TODO: Create buy command
             else if (Math.floorMod(broadcastNumber, 5) == 2) {
                 broadcastMessage("%nl%&8&l[ &b&lCAVES &8&l]%nl%&7&l» &fLæs serverens regler med: &b/regler%nl%&f");
-                // TODO: Create rules command
             } else if (Math.floorMod(broadcastNumber, 5) == 3) {
 
                 for (Player player : Bukkit.getOnlinePlayers()) {

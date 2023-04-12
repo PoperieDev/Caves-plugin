@@ -27,9 +27,6 @@ public class blocksCommand implements CommandExecutor {
             return false;
         }
         Player player = (Player) sender;
-        if (!(player.hasPermission("caves.admin"))) {
-            return true;
-        }
 
         if (args.length == 0) {
             player.sendMessage("/caveblocks start <group>");

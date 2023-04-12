@@ -9,6 +9,15 @@ public class playerMemory {
 
     private int backPackSlotSize;
     private int[] backPackItemAmounts;
+    private int coins;
+
+    // Coins
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+    public int getCoins() {
+        return coins;
+    }
 
     // Backpack
     public void setBackPackSlotSize(int backPackSlotSize) {

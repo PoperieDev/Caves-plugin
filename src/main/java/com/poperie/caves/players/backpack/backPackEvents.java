@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class backPackEvents implements Listener {
-
+    // TODO: Create a menu with a backpack button
     @EventHandler
     public void onBackPackInventoryClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player)) {

@@ -1,7 +1,9 @@
-package com.poperie.caves.players;
+package com.poperie.caves.admin;
 
 import com.poperie.caves.mining.items.itemMemory;
 import com.poperie.caves.mining.items.itemUtility;
+import com.poperie.caves.players.playerMemory;
+import com.poperie.caves.players.playerUtility;
 import com.poperie.caves.scoreboard;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,12 +1,12 @@
 package com.poperie.caves;
 
-import com.poperie.caves.admin.blocksAdminEvents;
-import com.poperie.caves.admin.blocksCommand;
-import com.poperie.caves.admin.viewBackPackCommand;
+import com.poperie.caves.admin.*;
+import com.poperie.caves.commands.buy.buyCommand;
+import com.poperie.caves.commands.coinsCommand;
+import com.poperie.caves.commands.reglerCommand;
 import com.poperie.caves.npcs.sell.sellNpcEvents;
 import com.poperie.caves.npcs.sell.sellNpcGui;
 import com.poperie.caves.players.backpack.backPackEvents;
-import com.poperie.caves.players.dataCommand;
 import com.poperie.caves.players.playerDataEvents;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -38,6 +38,10 @@ public final class Caves extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("cavesdata")).setExecutor(new dataCommand());
         Objects.requireNonNull(getCommand("caveblocks")).setExecutor(new blocksCommand());
         Objects.requireNonNull(getCommand("backpack")).setExecutor(new viewBackPackCommand());
+        Objects.requireNonNull(getCommand("regler")).setExecutor(new reglerCommand());
+        Objects.requireNonNull(getCommand("buy")).setExecutor(new buyCommand());
+        Objects.requireNonNull(getCommand("coins")).setExecutor(new coinsCommand());
+        Objects.requireNonNull(getCommand("coinsadmin")).setExecutor(new coinsAdminCommand());
 
         // Register the event listener
         getServer().getPluginManager().registerEvents(this, this);

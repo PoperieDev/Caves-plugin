@@ -30,10 +30,6 @@ public class viewBackPackCommand implements CommandExecutor {
         Player player = (Player) sender;
         playerMemory playerMemory = getPlayerMemory(player);
 
-        if (!(player.hasPermission("caves.admin"))) {
-            return true;
-        }
-
         // Create a new inventory with 6 rows
         Inventory inventory = player.getServer().createInventory(player, 6 * 9, "§b§lRygsæk");
         guiMethods.fillBottomRow(inventory, new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3));

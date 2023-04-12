@@ -18,6 +18,7 @@ public class playerData {
         cfg.set("stats.backpackSize", memory.getBackPackSize());
         cfg.set("stats.xp", memory.getXp());
         cfg.set("stats.slotSize", memory.getBackPackSlotSize());
+        cfg.set("stats.coins", memory.getCoins());
         cfg.set("backpack.items", memory.getBackPack());
         cfg.set("backpack.itemAmounts", memory.getBackPackItemAmounts());
 

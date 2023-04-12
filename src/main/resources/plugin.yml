@@ -5,13 +5,37 @@ authors: [Poperie#0140]
 description: Caves plugin for the caves server.
 
 commands:
+    # Admin commands
     cavesdata:
         usage: /cavesdata
         description: Caves plugin for the caves server.
         aliases: [cave, caveplugin, cavesplugin]
+        permission: caves.admin
+        permission-message: §cDu har ikke adgang til denne kommando.
     backpack:
         usage: /backpack
         description: Opens your backpack.
         aliases: [bp, backpacks, ryksæk]
+        permission: caves.admin
+        permission-message: §cDu har ikke adgang til denne kommando.
     caveblocks:
         usage: /caveblocks
+        permission-message: §cDu har ikke adgang til denne kommando.
+        permission: caves.admin
+    coinsadmin:
+        usage: /coinsadmin
+        description: Gives coins to a player.
+        aliases: [coinsa, coinsadmin, coinsadmin]
+        permission: caves.admin
+        permission-message: §cDu har ikke adgang til denne kommando.
+    # Player commands
+    regler:
+        usage: /regler
+        description: Viser reglerne for serveren.
+        aliases: [rules, regel, reglerne, regler]
+    buy:
+        usage: /buy
+        description: Viser alle købemuligheder.
+    coins:
+        usage: /coins
+        description: Viser hvor mange coins du har.

@@ -23,6 +23,7 @@ public class playerDataEvents implements Listener {
             FileConfiguration cfg = YamlConfiguration.loadConfiguration(f);
             memory.setBackPackSize(cfg.getInt("stats.backpackSize"));
             memory.setXp(cfg.getInt("stats.xp"));
+            memory.setCoins(cfg.getInt("stats.coins"));
 
             // Backpack
             memory.setBackPackSlotSize(cfg.getInt("stats.slotSize"));
@@ -49,6 +50,7 @@ public class playerDataEvents implements Listener {
             // Defaults
             memory.setBackPackSize(5);
             memory.setXp(0);
+            memory.setCoins(0);
             memory.setBackPackSlotSize(10);
             memory.setBackPack(null);
         }
